@@ -4,6 +4,7 @@ title OmniVoice - Local AI Voice Cloning
 
 :: =============================================
 :: OmniVoice Single-Click Installer & Launcher
+:: by sureshpydikondala
 :: https://huggingface.co/k2-fsa/OmniVoice
 ::
 :: - Auto-detects NVIDIA / AMD / Intel GPU
@@ -22,10 +23,12 @@ set "GPU_TIER=CPU"
 set "PORT=7860"
 
 echo.
-echo  =============================================
-echo   OmniVoice - Zero-Shot Voice Cloning
-echo   https://huggingface.co/k2-fsa/OmniVoice
-echo  =============================================
+echo  +==========================================+
+echo  ^|   OmniVoice - Zero-Shot Voice Cloning   ^|
+echo  ^|   Windows One-Click Installer            ^|
+echo  ^|   by sureshpydikondala                  ^|
+echo  ^|   https://huggingface.co/k2-fsa/OmniVoice ^|
+echo  +==========================================+
 echo.
 
 :: =============================================
@@ -257,14 +260,14 @@ echo    Port !PORT! available.
 :: =============================================
 :LAUNCH
 echo.
-echo  =============================================
-echo   Starting OmniVoice on port !PORT!
-echo   URL:  http://127.0.0.1:!PORT!
-echo   GPU:  !GPU_TIER!
-echo.
-echo   Browser opens automatically in ~8 seconds.
-echo   Press Ctrl+C to stop the server.
-echo  =============================================
+echo  +==========================================+
+echo  ^|   OmniVoice is starting...               ^|
+echo  ^|   URL : http://127.0.0.1:!PORT!          ^|
+echo  ^|   GPU : !GPU_TIER!                       ^|
+echo  ^|                                          ^|
+echo  ^|   Browser opens in ~8 seconds            ^|
+echo  ^|   Press Ctrl+C to stop                  ^|
+echo  +==========================================+
 echo.
 
 :: Open browser after delay (server needs ~5-8s to load model)

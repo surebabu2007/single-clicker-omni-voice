@@ -1,0 +1,15 @@
+# Virtual environment (created locally on each machine)
+.venv/
+
+# Installer state (created after first run)
+.installed
+install_log.txt
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
+Thumbs.db

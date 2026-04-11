@@ -12,7 +12,6 @@ Built on [k2-fsa/OmniVoice](https://huggingface.co/k2-fsa/OmniVoice) — clone a
 - Auto-detects your GPU and picks the right build
 - Downloads the model weights (~3–4 GB, once)
 - Launches a Gradio web UI at `http://127.0.0.1:7860`
-- Re-runs instantly — install is skipped after the first time
 
 ---
 
@@ -33,12 +32,21 @@ Built on [k2-fsa/OmniVoice](https://huggingface.co/k2-fsa/OmniVoice) — clone a
 
 ```
 1. Clone or download this repo
-2. Double-click  install_and_run.bat
-3. Wait for setup to finish (first run only)
-4. Browser opens automatically at http://127.0.0.1:7860
+2. Double-click  setup.bat          ← first time only
+3. Wait for setup to finish (~10-30 min depending on internet)
+4. Double-click  run.bat            ← every time after that
+5. Browser opens automatically at http://127.0.0.1:7860
 ```
 
-That's it.
+---
+
+## Files
+
+| File | Purpose |
+|---|---|
+| `setup.bat` | First-time setup — installs everything and downloads the model |
+| `run.bat` | Launcher — start OmniVoice after setup is done |
+| `_check_gpu.py` | Diagnostic — check which GPU mode is active |
 
 ---
 
@@ -62,7 +70,7 @@ To check which mode was selected after install, run:
 ## How it works
 
 ```
-install_and_run.bat
+setup.bat  (run once)
  ├── [1/8] Check Python 3.10+
  ├── [2/8] Create .venv
  ├── [3/8] Upgrade pip
@@ -70,19 +78,22 @@ install_and_run.bat
  ├── [5/8] Install PyTorch (correct build for your GPU)
  ├── [6/8] Install OmniVoice
  ├── [7/8] Download model weights (~3–4 GB, resumable)
- └── [8/8] Launch Gradio UI on localhost
+ └── [8/8] Write .installed marker
+
+run.bat  (run every time)
+ ├── Verify setup is complete
+ ├── Find available port (7860–7869)
+ └── Launch Gradio UI on localhost
 ```
 
-After the first successful run, a `.installed` file is created. Subsequent runs skip straight to launch.
-
-**To force a clean reinstall:** delete the `.installed` file and re-run the bat.
+**To force a clean reinstall:** delete the `.installed` file and re-run `setup.bat`.
 
 ---
 
 ## If something goes wrong
 
 **Model download failed / slow?**
-Downloads are resumable — just re-run the bat. If HuggingFace is blocked in your region, run this before launching:
+Downloads are resumable — just re-run `setup.bat`. If HuggingFace is blocked in your region, run this before launching:
 ```
 set HF_ENDPOINT=https://hf-mirror.com
 ```
@@ -91,8 +102,9 @@ set HF_ENDPOINT=https://hf-mirror.com
 
 **Common issues:**
 - `Python not found` — install Python 3.10+ and check "Add to PATH"
-- `PyTorch install failed` — check your internet connection, then re-run
+- `PyTorch install failed` — check your internet connection, then re-run `setup.bat`
 - `Ports 7860–7869 all in use` — close other apps using those ports
+- `OmniVoice is not installed yet` — run `setup.bat` before `run.bat`
 
 ---
 
